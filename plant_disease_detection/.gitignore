@@ -1,0 +1,27 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Dataset - do not upload to GitHub
+data/
+*.zip
+
+# Model checkpoints - do not upload large files
+models/
+*.pth
+*.pt
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
