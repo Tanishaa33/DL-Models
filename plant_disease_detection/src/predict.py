@@ -9,9 +9,7 @@ from torchvision import transforms
 from model import PlantDiseaseCNN
 
 
-# ==========================================
 # 1. DEVICE CONFIGURATION
-# ==========================================
 
 device = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
@@ -20,9 +18,7 @@ device = torch.device(
 print("Using device:", device)
 
 
-# ==========================================
 # 2. MODEL PATH CONFIGURATION
-# ==========================================
 
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))
@@ -35,13 +31,8 @@ MODEL_PATH = os.path.join(
 )
 
 
-# ==========================================
-# 3. CLASS NAMES
-# ==========================================
 
-# IMPORTANT:
-# Replace these names with your actual dataset classes.
-# Maintain EXACTLY the same order as during training.
+# 3. CLASS NAMES
 
 class_names = [
     "Pepper__bell___Bacterial_spot",
@@ -62,9 +53,8 @@ class_names = [
 ]
 
 
-# ==========================================
+
 # 4. LOAD TRAINED MODEL
-# ==========================================
 
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(
@@ -81,9 +71,7 @@ state_dict = torch.load(
 print("\nCheckpoint loaded successfully!")
 
 
-# ==========================================
 # 5. DETECT NUMBER OF CLASSES
-# ==========================================
 
 num_classes = state_dict["classifier.4.weight"].shape[0]
 
@@ -98,9 +86,7 @@ if len(class_names) != num_classes:
     )
 
 
-# ==========================================
 # 6. INITIALIZE MODEL
-# ==========================================
 
 model = PlantDiseaseCNN(
     num_classes=num_classes
@@ -116,9 +102,7 @@ print("\nModel loaded successfully!")
 print("Number of classes:", num_classes)
 
 
-# ==========================================
 # 7. IMAGE PREPROCESSING
-# ==========================================
 
 transform = transforms.Compose([
 
@@ -134,9 +118,7 @@ transform = transforms.Compose([
 ])
 
 
-# ==========================================
 # 8. PREDICTION FUNCTION
-# ==========================================
 
 def predict_image(image_path):
 
@@ -183,9 +165,7 @@ def predict_image(image_path):
     return predicted_class, confidence_score
 
 
-# ==========================================
 # 9. TEST IMAGE PREDICTION
-# ==========================================
 
 if __name__ == "__main__":
 
@@ -199,9 +179,7 @@ if __name__ == "__main__":
             image_path
         )
 
-        print("\n================================")
         print("     PLANT DISEASE PREDICTION")
-        print("================================")
 
         print(
             "Predicted Disease:",
@@ -212,8 +190,6 @@ if __name__ == "__main__":
             f"Confidence Score: {confidence:.2f}%"
         )
 
-        print("================================")
-
     except Exception as e:
 
-        print("\nPrediction Error:", e)
+        print("Prediction Error:", e)
