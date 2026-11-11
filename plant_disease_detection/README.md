@@ -7,21 +7,15 @@ This project identifies plant leaf diseases from uploaded images using a trained
 
 ---
 
-## 🚀 Live Demo
+## 🌐 Live Demo
 
-Try the application here:
+Try the deployed application here:
 
-### 🌱 [Plant Disease Detection - Live Demo](YOUR_STREAMLIT_APP_URL)
-
-**Live Application:** Replace `YOUR_STREAMLIT_APP_URL` with your deployed Streamlit application URL.
-
-### Application Preview
-
-![Plant Disease Detection UI](assets/plant_disease_ui.png)
+### [🌿 Plant Disease Detection – Live Demo](https://cnn-plant-detector.streamlit.app/)
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Plant diseases can significantly affect agricultural productivity and crop quality.
 
@@ -39,7 +33,7 @@ The trained model analyzes the uploaded image and predicts the corresponding dis
 
 ---
 
-## ✨ Features
+## Features
 
 - **Image Upload:** Upload plant leaf images in JPG, JPEG, and PNG formats.
 - **Image URL Prediction:** Provide a publicly accessible image URL.
@@ -48,11 +42,10 @@ The trained model analyzes the uploaded image and predicts the corresponding dis
 - **Confidence Score:** Display the model's prediction confidence.
 - **Top 3 Predictions:** Display the three most likely disease classes.
 - **Interactive UI:** Simple and user-friendly Streamlit interface.
-- **CPU/GPU Support:** Automatically detects available CUDA GPU or CPU.
 
 ---
 
-## 🧠 Technologies Used
+## Technologies Used
 
 | Technology | Purpose |
 |---|---|
@@ -68,7 +61,7 @@ The trained model analyzes the uploaded image and predicts the corresponding dis
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 plant_disease_detection/
@@ -83,23 +76,18 @@ plant_disease_detection/
 │   ├── model.py
 │   ├── dataset.py
 │   ├── train.py
+│   ├── predict.py
 │   ├── evaluate.py
-│   └── app.py
 │
-├── results/
-│   └── evaluation_results.txt
-│
-├── assets/
-│   └── plant_disease_ui.png
-│
+├── app.py
 ├── requirements.txt
-│
+├── config.py
 └── README.md
 ```
 
 ---
 
-## 🌱 Dataset Information
+## Dataset Information
 
 The project uses the PlantVillage dataset for training and evaluating the CNN model.
 
@@ -132,7 +120,7 @@ The project uses the PlantVillage dataset for training and evaluating the CNN mo
 
 ---
 
-## 📊 Model Evaluation Results
+## Model Evaluation Results
 
 The trained CNN model achieved the following evaluation results:
 
@@ -146,81 +134,9 @@ The trained CNN model achieved the following evaluation results:
 
 **Evaluation Dataset:** 20,638 images.
 
-**Note:** These are the previously obtained evaluation results. The evaluation split and image independence should be verified before treating them as final validation or test performance.
-
 ---
 
-## ⚙️ Installation and Setup
-
-### 1. Clone the Repository
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-```
-
-```bash
-cd plant_disease_detection
-```
-
-### 2. Create a Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-Activate the environment.
-
-**Windows:**
-
-```bash
-venv\Scripts\activate
-```
-
-**Linux/macOS:**
-
-```bash
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Download the Trained Model
-
-Place your trained model checkpoint inside:
-
-```text
-models/model.pth
-```
-
-The model checkpoint is required to run predictions.
-
-### 5. Run the Streamlit Application
-
-Navigate to the source directory:
-
-```bash
-cd src
-```
-
-Run the application:
-
-```bash
-streamlit run app.py
-```
-
-The application will open in your browser at:
-
-```text
-http://localhost:8501
-```
-
----
-
-## 🖥️ How to Use the Application
+## How to Use the Application
 
 1. Open the Plant Disease Detection web application.
 2. Upload a plant leaf image or provide an image URL.
@@ -232,7 +148,7 @@ http://localhost:8501
 
 ---
 
-## 🔍 Model Architecture
+## Model Architecture
 
 The project uses a custom Convolutional Neural Network (CNN) implemented using PyTorch.
 
@@ -246,7 +162,7 @@ Image preprocessing includes:
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 
 - Add Grad-CAM visualization to highlight disease-affected regions.
 - Support additional plant species and disease classes.
@@ -257,7 +173,7 @@ Image preprocessing includes:
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 - The model supports only the 15 classes used during training.
 - Predictions may be unreliable for unrelated images or unsupported plant species.
@@ -267,17 +183,7 @@ Image preprocessing includes:
 
 ---
 
-## 👨‍💻 Author
-
-**Your Name**
-
-GitHub: [Your GitHub Profile](YOUR_GITHUB_PROFILE_URL)
-
-LinkedIn: [Your LinkedIn Profile](YOUR_LINKEDIN_PROFILE_URL)
-
----
-
-## ⭐ Acknowledgements
+## Acknowledgements
 
 - PlantVillage Dataset
 - PyTorch
