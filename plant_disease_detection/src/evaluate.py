@@ -21,9 +21,7 @@ from sklearn.metrics import (
 from model import PlantDiseaseCNN
 
 
-# ==========================================
 # 1. DEVICE CONFIGURATION
-# ==========================================
 
 device = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
@@ -32,9 +30,7 @@ device = torch.device(
 print("Using device:", device)
 
 
-# ==========================================
 # 2. PATH CONFIGURATION
-# ==========================================
 
 BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))
@@ -60,9 +56,7 @@ RESULT_DIR = os.path.join(
 os.makedirs(RESULT_DIR, exist_ok=True)
 
 
-# ==========================================
 # 3. CHECK PATHS
-# ==========================================
 
 if not os.path.isdir(DATASET_PATH):
     raise FileNotFoundError(
@@ -75,9 +69,7 @@ if not os.path.exists(MODEL_PATH):
     )
 
 
-# ==========================================
 # 4. IMAGE TRANSFORMATION
-# ==========================================
 
 transform = transforms.Compose([
 
@@ -93,9 +85,8 @@ transform = transforms.Compose([
 ])
 
 
-# ==========================================
 # 5. LOAD SINGLE DATASET
-# ==========================================
+
 
 dataset = datasets.ImageFolder(
     root=DATASET_PATH,
@@ -130,9 +121,7 @@ for index, name in enumerate(class_names):
     print(index, name)
 
 
-# ==========================================
 # 6. LOAD TRAINED MODEL
-# ==========================================
 
 state_dict = torch.load(
     MODEL_PATH,
@@ -163,9 +152,7 @@ model.eval()
 print("\nModel loaded successfully!")
 
 
-# ==========================================
 # 7. EVALUATE MODEL
-# ==========================================
 
 criterion = nn.CrossEntropyLoss()
 
@@ -204,9 +191,7 @@ with torch.inference_mode():
         )
 
 
-# ==========================================
 # 8. CALCULATE METRICS
-# ==========================================
 
 evaluation_loss = total_loss / len(dataset)
 
@@ -237,13 +222,9 @@ f1 = f1_score(
 ) * 100
 
 
-# ==========================================
 # 9. DISPLAY RESULTS
-# ==========================================
 
-print("\n======================================")
 print("       MODEL EVALUATION RESULTS")
-print("======================================")
 
 print("Evaluation: Full dataset")
 
@@ -259,12 +240,10 @@ print(f"Recall:    {recall:.2f}%")
 
 print(f"F1 Score:  {f1:.2f}%")
 
-print("======================================")
 
 
-# ==========================================
 # 10. CLASSIFICATION REPORT
-# ==========================================
+
 
 report = classification_report(
     all_labels,
@@ -287,9 +266,8 @@ with open(
     file.write(report)
 
 
-# ==========================================
+
 # 11. CONFUSION MATRIX
-# ==========================================
 
 cm = confusion_matrix(
     all_labels,
@@ -329,9 +307,7 @@ plt.savefig(
 plt.close()
 
 
-# ==========================================
 # 12. SAVE METRICS
-# ==========================================
 
 with open(
     os.path.join(RESULT_DIR, "evaluation_metrics.txt"),
@@ -341,7 +317,6 @@ with open(
 
     file.write("PLANT DISEASE MODEL EVALUATION\n")
 
-    file.write("==============================\n")
 
     file.write("Evaluation dataset: Full dataset\n")
 
@@ -358,9 +333,7 @@ with open(
     file.write(f"F1 Score: {f1:.2f}%\n")
 
 
-# ==========================================
 # 13. COMPLETION
-# ==========================================
 
 print("\nEvaluation completed successfully!")
 
