@@ -33,13 +33,10 @@ DEVICE = torch.device(
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-MODEL_PATH = os.path.normpath(
-    os.path.join(
-        BASE_DIR,
-        "..",
-        "models",
-        "model.pth"
-    )
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "models",
+    "model.pth"
 )
 
 IMAGE_SIZE = 224
