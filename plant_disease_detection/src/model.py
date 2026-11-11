@@ -39,6 +39,9 @@ class PlantDiseaseCNN(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2)
         )
+            # Number of channels increases: 3 → 32 → 64 → 128 → 256.
+            # Image dimensions decrease: 224 → 112 → 56 → 28 → 14.
+
 
         # 3. Adaptive Average Pooling
 
